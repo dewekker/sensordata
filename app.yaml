@@ -1,0 +1,25 @@
+application: chestnut-labs 
+version: sensordata 
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /.*
+  script: main.app
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: webapp2
+  version: 2.5.1
+
+- name: jinja2
+  version: 2.6
+
