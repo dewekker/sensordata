@@ -39,7 +39,7 @@ class LoggingHandler(webapp2.RequestHandler):
 
 class CSVHandler(webapp2.RequestHandler):
     def get(self):
-       csv = [  sensorData.timestamp.strftime("%Y-%m-%d %H:%M:%S")+','+str(sensorData.temp)+','+str(sensorData.device_id) for sensorData in SensorData.query(SensorData.temp != -1000.0, SensorData.temp < 80.0).order(-SensorData.timestamp).fetch(1000) ]
+       csv = [  sensorData.timestamp.strftime("%Y-%m-%d %H:%M:%S")+','+str(sensorData.temp)+','+str(sensorData.device_id) for sensorData in SensorData.query().order(-SensorData.timestamp).fetch(1000) if sensorData.temp > -1000.0 and sensorData.temp < 80.0 ]
        self.response.headers['Content-Type'] = 'text/csv'
        self.response.out.write( "date,temp,id\n"+"\n".join(csv) )
 
