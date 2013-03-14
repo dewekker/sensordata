@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript"
+  src="dygraph-combined.js"></script>
+</head>
+<body>
+<div id="graphdiv2"
+  style="width:500px; height:300px;"></div>
+<script type="text/javascript">
+  g2 = new Dygraph(
+    document.getElementById("graphdiv2"),
+    "data.csv", // path to CSV file
+    {
+      showRoller: true,
+      valueRange:[15,30]
+      colors:[red,blue]
+    }          // options
+  );
+</script>
+</body>
+</html>
